@@ -2,7 +2,7 @@ import logging
 
 from app.config import settings
 from app.exceptions.soft_delete import SoftDeleteNotSupported
-from app.utils.time_utils import utcnow
+from app.utils.time_utils import datetime_to_str, utcnow
 from sqlalchemy import Boolean, Column, DateTime, create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker
 from sqlalchemy.orm.session import Session
@@ -29,6 +29,12 @@ class SoftDeleteMixin:
         self.is_deleted = False
         self.deleted_at = None
         return self
+
+    @property
+    def deleted_at_str(self):
+        if self.deleted_at is None:
+            return None
+        return datetime_to_str(self.deleted_at)
 
 
 class SoftDeleteBase(Base, SoftDeleteMixin):

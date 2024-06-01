@@ -39,12 +39,6 @@ class BaseModel(TimestampMixin, DeclarativeBase):
     def updated_at_str(self):
         return datetime_to_str(self.updated_at)
 
-    @property
-    def deleted_at_str(self):
-        if self.deleted_at is None:
-            return None
-        return datetime_to_str(self.deleted_at)
-
     def to_dict(self, include=None, exclude=None):
         """Return a dict representation of the model."""
         data = {}
@@ -61,5 +55,14 @@ class BaseModel(TimestampMixin, DeclarativeBase):
             exclude = set(exclude)
             keys = keys.difference(exclude)
         for key in keys:
+            if key.startswith("_"):
+                if not include or key not in include:
+                    continue
             data[key] = getattr(self, key)
         return data
+
+    def get_unique_keys(self):
+        """Return a list of keys of columns that have the unique attribute set."""
+        unique_keys = [key for key, column in self.__table__.columns.items() if column.unique]
+        return unique_keys
+

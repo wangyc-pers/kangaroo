@@ -1,17 +1,28 @@
 from app.models.base import BaseModel
-from app.utils.time_utils import utcnow
 from sqlalchemy import Boolean, Column, String
+from app.core.security import hash_password, check_password
 
 
 class User(BaseModel):
     ID_PREFIX = "us"
 
     email = Column(String, unique=True, index=True, nullable=False)
-    password = Column(String, nullable=False)
+    _password = Column(String, nullable=False)
     is_superuser = Column(Boolean, default=False)
 
+    @property
+    def password(self):
+        return self._password
+
+    @password.setter
+    def password(self, plain_password):
+        self._password = hash_password(plain_password)
+
+    def verify_password(self, plain_password):
+        return check_password(plain_password, self.password)
+
     def soft_delete(self):
-        self.email = f"deleted_{utcnow()}::{self.email}"
+        self.email = f"del_{self.id_str}::{self.email}"
         super().soft_delete()
 
     def restore(self):
