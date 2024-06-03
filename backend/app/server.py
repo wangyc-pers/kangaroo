@@ -7,7 +7,6 @@ from asgi_correlation_id import CorrelationIdMiddleware
 from fastapi import FastAPI
 from app.core.resp import SUCCESS
 from app.core.redis import init_redis_pool
-from contextlib import asynccontextmanager
 
 log = logging.getLogger(__name__)
 
