@@ -1,6 +1,6 @@
+from app.common.security import check_password, hash_password
 from app.models.base import BaseModel
 from sqlalchemy import Boolean, Column, String
-from app.core.security import hash_password, check_password
 
 
 class User(BaseModel):

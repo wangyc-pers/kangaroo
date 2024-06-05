@@ -1,12 +1,12 @@
 import logging
 
 from app.api.router import api_router
+from app.common.logger import configure_logging
+from app.common.redis import init_redis_pool
+from app.common.resp import SUCCESS
 from app.config import settings
-from app.core.logger import configure_logging
 from asgi_correlation_id import CorrelationIdMiddleware
 from fastapi import FastAPI
-from app.core.resp import SUCCESS
-from app.core.redis import init_redis_pool
 
 log = logging.getLogger(__name__)
 

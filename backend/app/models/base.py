@@ -1,4 +1,4 @@
-from app.core.snowflake import snowflake
+from app.common.snowflake import snowflake
 from app.database import SoftDeleteBase as DeclarativeBase
 from app.utils.base58_utils import int_to_str
 from app.utils.time_utils import datetime_to_str, utcnow
