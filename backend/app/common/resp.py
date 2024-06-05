@@ -1,6 +1,7 @@
 from asgi_correlation_id import correlation_id
 from starlette.responses import JSONResponse
 
+
 class JsonResp(object):
     SUCCESS = 0
     FAILED = -1
