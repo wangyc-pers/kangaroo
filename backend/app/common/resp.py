@@ -37,3 +37,4 @@ class JsonResp(object):
 SUCCESS = JsonResp(code=JsonResp.SUCCESS, msg="success")
 
 ERR_UNKNOWN = JsonResp(code=JsonResp.FAILED, msg="unknown error")
+

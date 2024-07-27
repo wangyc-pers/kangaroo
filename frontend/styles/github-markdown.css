@@ -1,0 +1,169 @@
+/* Additional vertical padding used by kbd tag. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 通用样式 */
+.py-05 {
+    padding-top: 0.125rem;
+    padding-bottom: 0.125rem;
+}
+
+.markdown {
+    @apply text-gray-900 leading-normal break-words dark:text-gray-100 text-left;
+
+}
+
+.markdown  > * + * {
+    @apply mt-0 mb-4;
+}
+
+.markdown li + li {
+    @apply mt-1;
+}
+
+.markdown i > p + p {
+    @apply mt-6;
+}
+
+.markdown strong {
+    @apply font-semibold;
+}
+
+.markdown a {
+    @apply text-primary-500 font-semibold;
+}
+.markdown a:hover {
+    @apply text-primary-600;
+}
+
+.markdown strong a {
+    @apply font-bold;
+}
+
+.content-header {
+    @apply flex flex-row items-center cursor-pointer dark:text-gray-100;
+}
+
+.content-header a {
+    @apply invisible text-primary-500 font-semibold;
+}
+
+.content-header:hover a {
+    @apply visible;
+}
+
+.markdown h1 {
+    @apply leading-tight text-4xl font-semibold mb-4 mt-6 pb-2 flex flex-row;
+}
+
+.markdown h2 {
+    @apply leading-tight border-b text-2xl font-semibold mb-4 mt-6 pb-2;
+}
+
+.markdown h3 {
+    @apply leading-snug text-lg font-semibold mb-4 mt-6;
+}
+
+.markdown h4 {
+    @apply leading-none text-base font-semibold mb-4 mt-6;
+}
+
+.markdown h5 {
+    @apply leading-tight text-sm font-semibold mb-4 mt-6;
+}
+
+.markdown h6 {
+    @apply leading-tight text-sm font-semibold text-gray-600 mb-4 mt-6;
+}
+
+.markdown blockquote {
+    @apply text-base border-l-4 border-gray-300 pl-4 pr-4 text-gray-600;
+}
+
+.markdown code {
+    @apply font-mono text-sm inline bg-gray-200 rounded px-1 py-05 dark:bg-gray-800;
+}
+
+.markdown pre {
+    @apply bg-gray-100 rounded p-4 dark:bg-gray-800 overflow-auto;
+}
+
+.markdown pre code {
+    @apply block bg-transparent p-0 overflow-visible rounded-none;
+}
+
+.markdown ul {
+    @apply text-base pl-8 list-disc;
+}
+
+.markdown ol {
+    @apply text-base pl-8 list-decimal;
+}
+
+.markdown kbd {
+    @apply text-xs inline-block rounded border px-1 py-05 align-middle font-normal font-mono shadow;
+}
+
+.markdown table {
+    @apply text-base border-gray-600;
+}
+
+.markdown th {
+    @apply border py-1 px-3;
+}
+
+.markdown td {
+    @apply border py-1 px-3;
+}
+
+/* Override pygments style background color. */
+.highlight pre {
+    @apply bg-gray-100 !important;
+}
+
+/* 手机端适配 */
+@media (max-width: 640px) {
+    .markdown {
+        @apply max-w-full;
+    }
+    h1 {
+        @apply text-2xl;
+    }
+
+    h2 {
+        @apply text-xl;
+    }
+
+    h3 {
+        @apply text-lg;
+    }
+
+    h4 {
+        @apply text-base;
+    }
+
+    h5 {
+        @apply text-sm;
+    }
+
+    h6 {
+        @apply text-xs;
+    }
+
+    blockquote {
+        @apply text-sm;
+    }
+
+    ul, ol {
+        @apply pl-4;
+    }
+
+    table {
+        @apply text-sm;
+    }
+
+    th, td {
+        @apply py-0.5 px-2;
+    }
+}
